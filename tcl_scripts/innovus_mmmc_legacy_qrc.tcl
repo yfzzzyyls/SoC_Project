@@ -1,4 +1,5 @@
 # Legacy MMMC setup with QRC Tech Files - Industry Standard Flow
+
 # Timing libraries (typ corner)
 set std_lib   "/ip/tsmc/tsmc16adfp/stdcell/NLDM/N16ADFP_StdCelltt0p8v25c.lib"
 set sram_lib  "/ip/tsmc/tsmc16adfp/sram/NLDM/N16ADFP_SRAM_tt0p8v0p8v25c_100a.lib"
@@ -6,8 +7,9 @@ set sram_lib  "/ip/tsmc/tsmc16adfp/sram/NLDM/N16ADFP_SRAM_tt0p8v0p8v25c_100a.lib
 # QRC Technology File - using worst corner for typical analysis
 set qrc_tech  "/ip/tsmc/tsmc16adfp/tech/RC/N16ADFP_QRC/worst/qrcTechFile"
 
-# SDC constraints - absolute path
-set sdc_file "/home/fy2243/ECE9433-SoC-Design-Project/tcl_scripts/soc_top.sdc"
+# SDC constraints
+# In batch runs Innovus may source this file from a temp path, so use working directory.
+set sdc_file [file normalize [file join [pwd] tcl_scripts soc_top.sdc]]
 
 # Create library set
 create_library_set -name libset_typ -timing [list $std_lib $sram_lib]

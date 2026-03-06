@@ -89,7 +89,7 @@ set_load 0.01 [all_outputs]
 set_driving_cell -lib_cell BUFFD1BWP16P90LVT [all_inputs]
 
 # Set operating conditions
-set_operating_conditions WCCOM
+puts "Using tool/library default operating condition."
 
 # Check for timing violations before compile
 check_timing
@@ -141,8 +141,12 @@ puts "  - qor.rpt"
 puts ""
 
 # Quick summary
-set area [get_attribute [current_design] area]
-puts "Design Area: [format "%.2f" $area] um^2"
+if {[catch {
+    set area [get_attribute [current_design] area]
+    puts "Design Area: [format "%.2f" $area] um^2"
+} area_err]} {
+    puts "Design Area: see $out_dir/area.rpt (attribute query not available: $area_err)"
+}
 puts ""
 puts "Next step: Run Innovus P&R with QRC tech files"
 puts "==========================================\n"
