@@ -1,7 +1,7 @@
 # UPF low-power check driver for soc_top using Synopsys VC Static.
 #
 # Usage example:
-#   /eda/synopsys/vc_static/U-2023.03-SP2-5/bin/vc_static_shell \
+#   /eda/synopsys/vc_static/W-2024.09-SP2-7/bin/vc_static_shell \
 #     -batch \
 #     -session /home/fy2243/soc_design/build/upf_lp/vc_session \
 #     -f /home/fy2243/soc_design/tcl_scripts/run_upf_lp_check.tcl

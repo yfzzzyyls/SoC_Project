@@ -31,7 +31,9 @@ VCS (Synopsys VCS simulator) is used for compilation and simulation:
 ```bash
 # Compile in lab directory (creates simv executable)
 cd lab1/  # or lab2/
-vcs -sverilog -debug_all +v2k *.sv
+export VCS_HOME=/eda/synopsys/vcs/W-2024.09-SP2-7
+export PATH=$VCS_HOME/bin:$PATH
+$VCS_HOME/bin/vcs -sverilog -debug_all +v2k *.sv
 
 # Run simulation
 ./simv
@@ -69,7 +71,7 @@ rm -rf csrc/ simv simv.daidir/ ucli.key verdi_config_file
 
 ## Development Environment
 
-- **Simulator**: Synopsys VCS U-2023.03-SP2-5
+- **Simulator**: Synopsys VCS W-2024.09-SP2-7
 - **Language**: SystemVerilog
 - **Python Environment**: Use conda for any Python-based tools
   ```bash
@@ -481,4 +483,3 @@ Hardware isn't software. Timing requirements often demand parallel, cross-domain
 2. **Use cross-domain signaling**: Handshaking between clock domains enables immediate response
 3. **Name states meaningfully**: ACCESS/RESP implies parallelism; MEMORY/TRANSMIT implies sequence
 4. **Architecture first, optimization second**: Get the fundamental structure right before fine-tuning
-

@@ -53,7 +53,7 @@ module mbist_top #(
 
     counter #(.length(10)) u_counter(
         .clk(clk),
-        .cen(NbarT), // counter enable signal
+        .cen(NbarT || ld), // counter enable signal
         .ld(ld), // load signal, when high, the counter will load the value of d_in to output q: q <= din
         .u_d(1'b1), // up/down signal, when high, the counter will count up, otherwise it will count down
         .d_in(CNT_SEED), // [length-1:0] input value

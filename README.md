@@ -68,7 +68,9 @@ Compile and run the minimal SoC top + testbench with VCS:
 ```bash
 cd /path/to/ECE9433-SoC-Design-Project
 mkdir -p build
-vcs -full64 -kdb -sverilog \
+export VCS_HOME=/eda/synopsys/vcs/W-2024.09-SP2-7
+export PATH=$VCS_HOME/bin:$PATH
+$VCS_HOME/bin/vcs -full64 -kdb -sverilog \
     sim/soc_top_tb.sv rtl/soc_top.sv rtl/interconnect.sv rtl/sram.sv rtl/peu.sv third_party/picorv32/picorv32.v \
     -o build/soc_top_tb
 ./build/soc_top_tb
